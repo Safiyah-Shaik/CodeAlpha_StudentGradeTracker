@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class StudentService {
-    private static final double PASSING_MARKS = 40.0;
+    private static final double PASSING_MARKS = 60.0;
 
     // Intentionally in-memory for the internship project: easy to read and easy to extend.
     private final ConcurrentHashMap<Long, Student> students = new ConcurrentHashMap<>();

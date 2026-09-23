@@ -14,6 +14,7 @@ A beginner-friendly grade management web application built for the CodeAlpha Jav
   - Passing students
   - Pass rate
 - Automatically assign a grade from A to F.
+- Treat scores of 60 or higher as passing; scores below 60 receive an F.
 - Show clear validation and empty states.
 - Responsive layout for desktop, tablet, and mobile screens.
 - Store records in Java data structures (`ConcurrentHashMap` and `AtomicLong`).
