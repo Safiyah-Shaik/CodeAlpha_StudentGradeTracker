@@ -14,14 +14,21 @@ localPort = 25692
 [services.development]
 run = "PORT=8080 mvn -q -f ../../backend/pom.xml spring-boot:run > /tmp/student-grade-tracker-backend.log 2>&1 & pnpm --filter @workspace/student-grade-tracker run dev"
 
-[services.production]
-build = [ "pnpm", "--filter", "@workspace/student-grade-tracker", "run", "build" ]
-serve = "static"
-publicDir = "artifacts/student-grade-tracker/dist/public"
+[services.production.build]
+args = [ "pnpm", "--filter", "@workspace/student-grade-tracker", "run", "build" ]
 
-[[services.production.rewrites]]
-from = "/*"
-to = "/index.html"
+[services.production.build.env]
+NODE_ENV = "production"
+
+[services.production.run]
+args = [ "java", "-jar", "backend/target/student-grade-tracker-1.0.0.jar" ]
+
+[services.production.run.env]
+PORT = "25692"
+NODE_ENV = "production"
+
+[services.production.health.startup]
+path = "/"
 
 [services.env]
 PORT = "25692"
